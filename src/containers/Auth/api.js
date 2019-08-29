@@ -17,9 +17,10 @@ export const logoutApi = () =>
         .post('/auth/logout')
         .then(apiSubmissionError);
 
-export const signUpApi= (data) => api()
-    .post('/auth/register', data)
-    .then(apiSubmissionError);
+export const signUpApi = (data) =>          console.log('SignUp...');
+    // api()
+    //     .post('/auth/register', data)
+    //     .then(apiSubmissionError);
 
 export const checkRegisterByTokenApi = (token) => api().get(`/auth/check-register-by-token?token=${token}`);
 

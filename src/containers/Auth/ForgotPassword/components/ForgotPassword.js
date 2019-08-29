@@ -1,13 +1,13 @@
 import {Field} from "redux-form";
-import TextInput from "../../../../components/TextInput";
+import TextInput from "../../../../components/TextInput/TextInput";
 import React from "react";
 
 const ForgotPassword = ({handleFormSubmit, trans}) => {
 
     return (
-        <section className="login">
+        <section className="forgotPassword">
             <form onSubmit={handleFormSubmit}>
-                <Field name='email' component={TextInput} label='Email' type='text'/>
+                <Field name='email' component={TextInput} label={trans('form.email.field')} type='text'/>
                 <button>{trans('submit')}</button>
             </form>
         </section>

@@ -4,11 +4,10 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 
 import validate from "./validate";
-import {loginAction} from "../actions";
-import TextInput from "../../../components/TextInput";
-import {ROUTE_TO_FORGOT_PASSWORD} from "../../../constants/routes";
+import {signUpAction} from "../actions";
 import {injectIntl} from "react-intl";
 import SignUp from "./components/SignUp";
+import {ROUTE_TO_LOGIN} from "../../../constants/routes";
 
 
 const SignUpContainer = (props) => {
@@ -39,17 +38,17 @@ const SignUpContainer = (props) => {
         submitter();
     };
 
-    const goToForgotPassword = () => {
+    const goToLogin = () => {
         const {
             history,
         } = props;
 
-        history.push(ROUTE_TO_FORGOT_PASSWORD);
+        history.push(ROUTE_TO_LOGIN);
     };
 
     return (
-        <Login trans={trans}
-               goToForgotPassword={goToForgotPassword}
+        <SignUp trans={trans}
+               goToLogin={goToLogin}
                handleFormSubmit={handleFormSubmit}/>
     )
 };
@@ -61,7 +60,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: payload => dispatch(loginAction(payload)),
+    onSubmit: payload => dispatch(signUpAction(payload)),
 });
 
 export default compose(

@@ -1,3 +1,17 @@
 {
-  "one.text": "привет"
+  "submit": "Отправить",
+  "one.text": "Привет",
+  "form.name.field": "Имя",
+  "form.email.field": "Почта",
+  "form.password.field": "Пароль",
+  "form.confirm_password.field": "Подтвердите пароль",
+
+  "errors.cannot.be.blank": "Поле не может быть пустым",
+  "errors.invalid.email": "Некорректный email",
+  "errors.invalid.password.length": "От 6 до 30 символов",
+  "errors.passwords.don`t.match": "Пароли не совпадают",
+  "errors.invalid.name.length": "От 2 до 30 символов",
+  "auth.forgot.password.link" : "Забыли пароль",
+  "auth.login" : "Вход",
+  "auth.signUp" : "Регистрация"
 }

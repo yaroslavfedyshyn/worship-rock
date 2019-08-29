@@ -5,8 +5,10 @@ import {connect} from "react-redux";
 
 import validate from "./validate";
 import {loginAction} from "../actions";
-import TextInput from "../../../components/TextInput";
-import {ROUTE_TO_FORGOT_PASSWORD} from "../../../constants/routes";
+import {
+    ROUTE_TO_FORGOT_PASSWORD,
+    ROUTE_TO_SIGN_UP
+} from "../../../constants/routes";
 import {injectIntl} from "react-intl";
 import Login from "./components/Login";
 
@@ -47,9 +49,18 @@ const LoginContainer = (props) => {
         history.push(ROUTE_TO_FORGOT_PASSWORD);
     };
 
+    const goToSignUp = () => {
+        const {
+            history,
+        } = props;
+
+        history.push(ROUTE_TO_SIGN_UP);
+    };
+
     return (
         <Login trans={trans}
                goToForgotPassword={goToForgotPassword}
+               goToSignUp={goToSignUp}
                handleFormSubmit={handleFormSubmit}/>
     )
 };

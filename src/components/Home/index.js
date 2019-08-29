@@ -3,6 +3,7 @@ import {injectIntl} from "react-intl";
 import {changeLocaleAction} from "../../utils/changeLangAction";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {ROUTE_TO_LOGIN} from "../../constants/routes";
 
 const Home = (props) => {
 
@@ -14,6 +15,9 @@ const Home = (props) => {
         <div>
             <p>{trans('one.text')}</p>
             <button type='button' onClick={() => props.changeLocale('ru')}>Click</button>
+            <button type='button' onClick={() => props.history.push(ROUTE_TO_LOGIN)}>
+                {trans('auth.login')}
+            </button>
         </div>
     )
 };

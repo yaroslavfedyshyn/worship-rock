@@ -1,7 +1,7 @@
 import {Field, getFormSyncErrors, reduxForm} from "redux-form";
 import React from "react";
 
-import TextInput from "../../../components/TextInput";
+import TextInput from "../../../components/TextInput/TextInput";
 import {forgotPasswordAction} from "../actions";
 import {compose} from "redux";
 import {connect} from "react-redux";
