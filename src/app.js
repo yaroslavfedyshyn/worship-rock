@@ -33,7 +33,6 @@ export default class Index extends Component {
 
     render() {
         const {locale} = this.state;
-        console.dir(this.state)
 
         return (
             <Provider store={store}>

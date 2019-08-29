@@ -8,10 +8,10 @@ import {loginAction} from "../actions";
 import TextInput from "../../../components/TextInput";
 import {ROUTE_TO_FORGOT_PASSWORD} from "../../../constants/routes";
 import {injectIntl} from "react-intl";
-import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 
-const LoginContainer = (props) => {
+const SignUpContainer = (props) => {
 
     const trans = (id) => {
         return props.intl.formatMessage({id});
@@ -54,7 +54,7 @@ const LoginContainer = (props) => {
     )
 };
 
-const formName = 'login';
+const formName = 'signUp';
 
 const mapStateToProps = state => ({
     errors: getFormSyncErrors(formName)(state),
@@ -71,4 +71,4 @@ export default compose(
         validate,
     }),
     connect(mapStateToProps, mapDispatchToProps)
-)(LoginContainer);
+)(SignUpContainer);

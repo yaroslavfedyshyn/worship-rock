@@ -1,3 +1,8 @@
 {
-    "one.text": "hello"
+    "submit": "Submit",
+    "one.text": "hello",
+    "errors.cannot.be.blank": "Field cannot be blank",
+    "errors.invalid.email": "Invalid email",
+    "errors.invalid.password.length": "From 4 to 8 symbols",
+    "auth.forgot.password.link" : "Forgot password"
 }
