@@ -28,9 +28,10 @@ export const forgotPasswordApi = (data) => api()
     .post('/auth/forgot-password', data)
     .then(apiSubmissionError);
 
-export const resetPasswordApi = (data) => api()
-    .post('/auth/reset-password', data)
-    .then(apiSubmissionError);
+export const resetPasswordApi = (data) => console.log('Reset passeword...');
+    // api()
+    // .post('/auth/reset-password', data)
+    // .then(apiSubmissionError);
 
 export const fetchDocumentByIdApi = (id) =>
     api()

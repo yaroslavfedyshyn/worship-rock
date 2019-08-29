@@ -5,6 +5,7 @@ import {
     ROUTE_TO_ROOT,
     ROUTE_TO_LOGIN,
     ROUTE_TO_FORGOT_PASSWORD,
+    ROUTE_TO_RESET_PASSWORD,
     ROUTE_TO_SIGN_UP,
 } from '../../constants/routes';
 
@@ -12,6 +13,7 @@ import Home from '../../components/Home';
 import Login from '../../containers/Auth/Login';
 import ForgotPassword from '../../containers/Auth/ForgotPassword';
 import SignUp from "../Auth/SignUp";
+import ResetPassword from "../Auth/ResetPassword";
 
 const App = () => {
 
@@ -21,6 +23,7 @@ const App = () => {
                 <Route exact path={ROUTE_TO_LOGIN} component={Login}/>
                 <Route exact path={ROUTE_TO_SIGN_UP} component={SignUp}/>
                 <Route exact path={ROUTE_TO_FORGOT_PASSWORD} component={ForgotPassword}/>
+                <Route exact path={ROUTE_TO_RESET_PASSWORD} component={ResetPassword}/>
             </Switch>
     )
 };

@@ -4,7 +4,7 @@
   "form.name.field": "Имя",
   "form.email.field": "Почта",
   "form.password.field": "Пароль",
-  "form.confirm_password.field": "Подтвердите пароль",
+  "form.confirm.password.field": "Подтвердите пароль",
 
   "errors.cannot.be.blank": "Поле не может быть пустым",
   "errors.invalid.email": "Некорректный email",

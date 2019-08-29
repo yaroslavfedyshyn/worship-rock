@@ -4,7 +4,7 @@
     "form.name.field": "Name",
     "form.email.field": "Email",
     "form.password.field": "Password",
-    "form.confirm_password.field": "Confirm password",
+    "form.confirm.password.field": "Confirm password",
 
 
     "errors.cannot.be.blank": "Field cannot be blank",
