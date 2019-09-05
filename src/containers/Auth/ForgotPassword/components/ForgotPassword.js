@@ -1,4 +1,4 @@
-import {Field} from "redux-form";
+import {Field} from "redux-form/immutable";
 import TextInput from "../../../../components/TextInput/TextInput";
 import React from "react";
 

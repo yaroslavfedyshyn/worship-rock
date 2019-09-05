@@ -1,26 +1,21 @@
-import {Field, getFormSyncErrors, reduxForm} from "redux-form";
+import {getFormSyncErrors, reduxForm} from "redux-form/immutable";
 import React from "react";
-
-import TextInput from "../../../components/TextInput/TextInput";
-import {forgotPasswordAction} from "../actions";
+import {injectIntl} from "react-intl";
 import {compose} from "redux";
 import {connect} from "react-redux";
+
+import {forgotPasswordAction} from "../actions";
 import validate from "./validate";
-import {injectIntl} from "react-intl";
 import ForgotPassword from "./components/ForgotPassword";
 
 const ForgotPasswordContainer = (props) => {
-
-    const trans = (id) => {
-        return props.intl.formatMessage({id});
-    };
 
     const {
         onSubmit,
         handleSubmit,
         valid,
         touch,
-        errors = {}
+        errors
     } = props;
 
     const handleFormSubmit = (e) => {
@@ -38,14 +33,14 @@ const ForgotPasswordContainer = (props) => {
     };
 
     return (
-        <ForgotPassword handleFormSubmit={handleFormSubmit} trans={trans}/>
+        <ForgotPassword handleFormSubmit={handleFormSubmit} trans={(id) => props.intl.formatMessage({id})}/>
     );
 };
 
 const formName = 'forgotPassword';
 
 const mapStateToProps = state => ({
-    errors: getFormSyncErrors(formName)(state)
+    errors: getFormSyncErrors(formName)(state) || {}
 });
 
 const mapDispatchToProps = dispatch => ({

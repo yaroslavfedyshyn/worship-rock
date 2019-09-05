@@ -1,27 +1,23 @@
-import React, {Component} from 'react';
-import {Field, reduxForm, getFormSyncErrors} from 'redux-form';
+import React from 'react';
+import {reduxForm, getFormSyncErrors} from 'redux-form/immutable';
 import {compose} from "redux";
 import {connect} from "react-redux";
+import {injectIntl} from "react-intl";
 
 import validate from "./validate";
-import {signUpAction} from "../actions";
-import {injectIntl} from "react-intl";
 import SignUp from "./components/SignUp";
+import {signUpStory} from "../story";
 import {ROUTE_TO_LOGIN} from "../../../constants/routes";
 
 
 const SignUpContainer = (props) => {
-
-    const trans = (id) => {
-        return props.intl.formatMessage({id});
-    };
 
     const {
         handleSubmit,
         onSubmit,
         valid,
         touch,
-        errors = {}
+        errors,
     } = props;
 
     const handleFormSubmit = (e) => {
@@ -31,7 +27,12 @@ const SignUpContainer = (props) => {
             return touch(...Object.keys(errors));
         }
 
-        const submitter = handleSubmit(async (values) => {
+        const submitter = handleSubmit(async (_values) => {
+            const {
+                confirmPassword,
+                ...values
+            } = _values.toJS();
+
             await onSubmit(values);
         });
 
@@ -47,7 +48,7 @@ const SignUpContainer = (props) => {
     };
 
     return (
-        <SignUp trans={trans}
+        <SignUp trans={(id) => props.intl.formatMessage({id})}
                goToLogin={goToLogin}
                handleFormSubmit={handleFormSubmit}/>
     )
@@ -56,11 +57,11 @@ const SignUpContainer = (props) => {
 const formName = 'signUp';
 
 const mapStateToProps = state => ({
-    errors: getFormSyncErrors(formName)(state),
+    errors: getFormSyncErrors(formName)(state) || {},
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: payload => dispatch(signUpAction(payload)),
+    onSubmit: async data => await signUpStory({data, dispatch})
 });
 
 export default compose(

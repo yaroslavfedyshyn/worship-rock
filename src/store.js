@@ -3,7 +3,7 @@ import {
     applyMiddleware,
     compose
 } from "redux";
-import promiseMiddleware from 'redux-promise-middleware'
+import {createPromise} from 'redux-promise-middleware'
 
 import createReducer from './reducers';
 
@@ -14,11 +14,18 @@ const composeEnhancers =
             // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
         }) : compose;
 
+const middlewares = [
+    createPromise({
+        promiseTypeSuffixes: ['START', 'SUCCESS', 'FAIL'],
+    }),
+];
+
 const enhancer = composeEnhancers(
-    applyMiddleware(promiseMiddleware),
+    applyMiddleware(...middlewares),
+
     // other store enhancers if any
 );
 
-const store = createStore(createReducer(), enhancer);
+const store = createStore(createReducer, enhancer);
 
 export default store;

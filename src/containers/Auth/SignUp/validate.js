@@ -6,32 +6,40 @@ import {
     isNameLengthCorrect
 } from '../../../utils/validators';
 
-export default (values, props) => {
+export default (_values, props) => {
+    const values = _values.toJS ? _values.toJS(): _values;
+
     const trans = (id) => {
         return props.intl.formatMessage({id});
     };
 
     const {
-        name,
+        firstName,
+        lastName,
         email,
         password,
-        confirm_password
+        confirmPassword
     } = values;
 
     const errors = {};
 
     const trimmedEmail = _.trim(email);
-    const trimmedName = _.trim(name);
+    const trimmedFirstName = _.trim(firstName);
+    const trimmedLastName = _.trim(lastName);
 
     const trimmedPassword = _.trim(password);
-    const trimmedConfirmPassword = _.trim(confirm_password);
+    const trimmedConfirmPassword = _.trim(confirmPassword);
 
-    //debugger;
+    if (!trimmedFirstName) {
+        errors.firstName = trans('errors.cannot.be.blank');
+    } else if (!isNameLengthCorrect(trimmedFirstName)) {
+        errors.firstName = trans('errors.invalid.name.length')
+    }
 
-    if (!trimmedName) {
-        errors.name = trans('errors.cannot.be.blank');
-    } else if (!isNameLengthCorrect(trimmedName)) {
-        errors.name = trans('errors.invalid.name.length')
+    if (!trimmedLastName) {
+        errors.lastName = trans('errors.cannot.be.blank');
+    } else if (!isNameLengthCorrect(trimmedLastName)) {
+        errors.lastName = trans('errors.invalid.name.length')
     }
 
     if (!trimmedEmail) {
@@ -47,11 +55,11 @@ export default (values, props) => {
     }
 
     if (!trimmedConfirmPassword) {
-        errors.confirm_password = trans('errors.cannot.be.blank');
+        errors.confirmPassword = trans('errors.cannot.be.blank');
     } else if (!isPasswordLengthCorrect(trimmedConfirmPassword)) {
-        errors.confirm_password = trans('errors.invalid.password.length');
+        errors.confirmPassword = trans('errors.invalid.password.length');
     } else if (trimmedPassword !== trimmedConfirmPassword) {
-        errors.confirm_password = trans('errors.passwords.don`t.match')
+        errors.confirmPassword = trans('errors.passwords.don`t.match')
     }
 
 

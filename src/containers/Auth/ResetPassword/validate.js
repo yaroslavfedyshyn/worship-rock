@@ -9,13 +9,13 @@ export default (values, props) => {
 
     const {
         password,
-        confirm_password
+        confirmPassword
     } = values;
 
     const errors = {};
 
     const trimmedPassword = _.trim(password);
-    const trimmedConfirmPassword = _.trim(confirm_password);
+    const trimmedConfirmPassword = _.trim(confirmPassword);
 
     if (!trimmedPassword) {
         errors.password = trans('errors.cannot.be.blank');
@@ -24,11 +24,11 @@ export default (values, props) => {
     }
 
     if (!trimmedConfirmPassword) {
-        errors.confirm_password = trans('errors.cannot.be.blank');
+        errors.confirmPassword = trans('errors.cannot.be.blank');
     } else if (!isPasswordLengthCorrect(trimmedConfirmPassword)) {
-        errors.confirm_password = trans('errors.invalid.password.length');
+        errors.confirmPassword = trans('errors.invalid.password.length');
     } else if (trimmedPassword !== trimmedConfirmPassword) {
-        errors.confirm_password = trans('errors.passwords.don`t.match')
+        errors.confirmPassword = trans('errors.passwords.don`t.match')
     }
 
 

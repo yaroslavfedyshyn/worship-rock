@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {Field, reduxForm, getFormSyncErrors} from 'redux-form';
+import React from 'react';
+import {reduxForm, getFormSyncErrors} from 'redux-form/immutable';
 import {compose} from "redux";
 import {connect} from "react-redux";
+import {injectIntl} from "react-intl";
 
 import validate from "./validate";
 import {loginAction} from "../actions";
@@ -9,22 +10,18 @@ import {
     ROUTE_TO_FORGOT_PASSWORD,
     ROUTE_TO_SIGN_UP
 } from "../../../constants/routes";
-import {injectIntl} from "react-intl";
 import Login from "./components/Login";
+import {loginStory} from "../story";
 
 
 const LoginContainer = (props) => {
-
-    const trans = (id) => {
-        return props.intl.formatMessage({id});
-    };
 
     const {
         handleSubmit,
         onSubmit,
         valid,
         touch,
-        errors = {}
+        errors
     } = props;
 
     const handleFormSubmit = (e) => {
@@ -35,7 +32,7 @@ const LoginContainer = (props) => {
         }
 
         const submitter = handleSubmit(async (values) => {
-            await onSubmit(values);
+            await onSubmit(values.toJS());
         });
 
         submitter();
@@ -58,7 +55,7 @@ const LoginContainer = (props) => {
     };
 
     return (
-        <Login trans={trans}
+        <Login trans={(id) => props.intl.formatMessage({id})}
                goToForgotPassword={goToForgotPassword}
                goToSignUp={goToSignUp}
                handleFormSubmit={handleFormSubmit}/>
@@ -68,11 +65,11 @@ const LoginContainer = (props) => {
 const formName = 'login';
 
 const mapStateToProps = state => ({
-    errors: getFormSyncErrors(formName)(state),
+    errors: getFormSyncErrors(formName)(state) || {},
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: payload => dispatch(loginAction(payload)),
+    onSubmit: async data => await loginStory({data, dispatch})
 });
 
 export default compose(

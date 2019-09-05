@@ -1,8 +1,10 @@
-import { create } from 'apisauce'
+import {create} from 'apisauce'
 
-const api = create({
-    baseURL: 'https://api.github.com',
-    headers: { Accept: 'application/vnd.github.v3+json' },
-});
+const api = () => {
+    return create({
+        baseURL: '',
+        headers: {Accept: 'application/vnd.github.v3+json'},
+    });
+};
 
 export default api;

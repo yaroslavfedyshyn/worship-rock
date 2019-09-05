@@ -8,8 +8,6 @@ import {
     FORGOT_PASSWORD,
     RESET_PASSWORD,
     RESET_STATE,
-    FETCH_DOCUMENT_BY_ID,
-    SIGN_DOCUMENT,
 } from './constants';
 import {
     getMeApi,
@@ -18,8 +16,6 @@ import {
     signUpApi,
     forgotPasswordApi,
     resetPasswordApi,
-    signDocumentApi,
-    fetchDocumentByIdApi,
 } from './api';
 
 export const getMeAction = createAction(GET_ME, async (d) => await getMeApi(d));
@@ -33,6 +29,3 @@ export const forgotPasswordAction = createAction(FORGOT_PASSWORD, async (d) => a
 export const resetPasswordAction = createAction(RESET_PASSWORD, async (d) => await resetPasswordApi(d));
 
 export const resetStateAction = createAction(RESET_STATE);
-
-export const fetchDocumentByIdAction = createAction(FETCH_DOCUMENT_BY_ID, async d => await fetchDocumentByIdApi(d));
-export const signDocumentAction = createAction(SIGN_DOCUMENT, async d => await signDocumentApi(d), m => m);

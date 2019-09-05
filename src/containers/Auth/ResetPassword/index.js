@@ -1,36 +1,23 @@
-import React, {Component} from 'react';
-import {Field, reduxForm, getFormSyncErrors} from 'redux-form';
+import React from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
+import {injectIntl} from "react-intl";
+import {reduxForm, getFormSyncErrors} from 'redux-form/immutable';
 
 import validate from "./validate";
-import {loginAction, resetPasswordAction} from "../actions";
-import {ROUTE_TO_ROOT} from "../../../constants/routes";
-import {injectIntl} from "react-intl";
+import { resetPasswordAction} from "../actions";
 import ResetPassword from "./components/ResetPassword";
 
 const ResetPasswordContainer = (props) => {
-
-    const trans = (id) => {
-        return props.intl.formatMessage({id});
-    };
 
     const {
         handleSubmit,
         onSubmit,
         valid,
         touch,
-        errors = {}
+        errors
     } = props;
 
-
-    const goToRoot = () => {
-        const {
-            history,
-        } = props;
-
-        history.push(ROUTE_TO_ROOT);
-    };
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -41,16 +28,14 @@ const ResetPasswordContainer = (props) => {
 
         const submitter = handleSubmit(async (values) => {
             await onSubmit(values)
-                .then(goToRoot());
         });
 
         submitter();
     };
 
 
-
     return (
-        <ResetPassword trans={trans}
+        <ResetPassword trans={(id) => props.intl.formatMessage({id})}
                        handleFormSubmit={handleFormSubmit}/>
     )
 };
@@ -58,7 +43,7 @@ const ResetPasswordContainer = (props) => {
 const formName = 'resetPassword';
 
 const mapStateToProps = state => ({
-    errors: getFormSyncErrors(formName)(state),
+    errors: getFormSyncErrors(formName)(state) || {},
 });
 
 const mapDispatchToProps = (dispatch) => ({

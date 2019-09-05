@@ -1,7 +1,8 @@
 {
     "submit": "Submit",
     "one.text": "hello",
-    "form.name.field": "Name",
+    "form.firstName.field": "First name",
+    "form.lastName.field": "Last name",
     "form.email.field": "Email",
     "form.password.field": "Password",
     "form.confirm.password.field": "Confirm password",

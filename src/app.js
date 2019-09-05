@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
-import App from './containers/App';
-import * as serviceWorker from './serviceWorker';
-import store from "./store";
+import {Router} from 'react-router-dom';
+import history from './history';
 import {Provider} from "react-redux";
 import {IntlProvider} from 'react-intl';
+
+import store from "./store";
+import App from './containers/App';
+import * as serviceWorker from './serviceWorker';
 import en_messages from './translations/en.json';
 import ru_messages from './translations/ru.json';
 import {DEFAULT_LOCALE} from "./constants";
@@ -12,9 +14,7 @@ import {DEFAULT_LOCALE} from "./constants";
 export default class Index extends Component {
 
     state = {
-        locale: {
-            lang: DEFAULT_LOCALE
-        }
+        lang: DEFAULT_LOCALE
     };
 
     messages = {
@@ -25,19 +25,21 @@ export default class Index extends Component {
     constructor() {
         super();
         store.subscribe(() => {
+            const state = store.getState().toJS();
+
             this.setState({
-                locale: store.getState().locale
+                locale: state.locale.lang
             })
         })
     }
 
     render() {
-        const {locale} = this.state;
+        const {lang} = this.state;
 
         return (
             <Provider store={store}>
-                <Router>
-                    <IntlProvider locale={locale.lang} messages={this.messages[locale.lang]}>
+                <Router history={history}>
+                    <IntlProvider locale={lang} messages={this.messages[lang]}>
                         <App/>
                     </IntlProvider>
                 </Router>
