@@ -26,7 +26,7 @@ export default compose(
     injectIntl,
     connect(
         state => ({
-            locale: state.locale,
+            locale: state.getIn(['locale', 'lang']),
         }),
         dispatch => ({
             changeLocale: payload => dispatch(changeLocaleAction(payload))

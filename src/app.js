@@ -28,7 +28,7 @@ export default class Index extends Component {
             const state = store.getState().toJS();
 
             this.setState({
-                locale: state.locale.lang
+                lang: state.locale.lang
             })
         })
     }

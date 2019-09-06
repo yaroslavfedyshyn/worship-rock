@@ -1,5 +1,8 @@
 import typeToReducer from 'type-to-reducer';
 import {LOGIN} from "./constants";
+import setToken from "../../utils/setToken";
+import setUser from "../../utils/setUser";
+import {fromJS} from "immutable";
 
 export const initialState = {
     me: null,
@@ -8,10 +11,14 @@ export const initialState = {
 export default typeToReducer({
     [LOGIN]: {
         SUCCESS: (state, action) => {
-            return {
-                ...state,
-                me: action.payload,
-            }
+            const data = action.payload;
+
+            setUser(data.user);
+            setToken(data.token);
+
+            return state
+                .set('me', fromJS(data.user))
+
         }
     }
 }, initialState)

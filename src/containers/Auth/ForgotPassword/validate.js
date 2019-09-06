@@ -1,11 +1,13 @@
 import _ from 'lodash';
 import { isEmailCorrect } from '../../../utils/validators';
 
-export default (values, props) => {
+export default (_values, props) => {
 
     const trans = (id) => {
         return props.intl.formatMessage({id});
     };
+
+    const values = _values.toJS ? _values.toJS(): _values;
 
     const {
         email,

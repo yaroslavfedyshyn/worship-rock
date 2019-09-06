@@ -9,7 +9,7 @@ import {
     ROUTE_TO_SIGN_UP,
 } from '../../constants/routes';
 
-import Home from '../../components/Home';
+import Home from '../Home';
 import Login from '../../containers/Auth/Login';
 import ForgotPassword from '../../containers/Auth/ForgotPassword';
 import SignUp from "../Auth/SignUp";

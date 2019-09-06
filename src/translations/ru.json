@@ -1,7 +1,8 @@
 {
   "submit": "Отправить",
   "one.text": "Привет",
-  "form.name.field": "Имя",
+  "form.firstName.field": "Имя",
+  "form.lastName.field": "Фамилия",
   "form.email.field": "Почта",
   "form.password.field": "Пароль",
   "form.confirm.password.field": "Подтвердите пароль",
