@@ -1,6 +1,6 @@
 import React from "react";
 
-const Index = ({input, label, type, meta: {touched, error, warning}}) => (
+const TextInput = ({input, label, type, meta: {touched, error, warning}}) => (
     <div>
         <label className="control-label">{label}
             <div>
@@ -12,4 +12,4 @@ const Index = ({input, label, type, meta: {touched, error, warning}}) => (
     </div>
 );
 
-export default Index
+export default TextInput

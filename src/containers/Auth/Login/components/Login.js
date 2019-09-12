@@ -1,5 +1,5 @@
 import {Field} from "redux-form/immutable";
-import Index from "../../../../components/TextInput";
+import TextInput from "../../../../components/TextInput/TextInput";
 import React from "react";
 
 const Login = ({
@@ -12,8 +12,8 @@ const Login = ({
     return (
         <section className="login">
             <form onSubmit={handleFormSubmit}>
-                <Field name='email' component={Index} label={trans('form.email.field')} type='text'/>
-                <Field name='password' component={Index} label={trans('form.password.field')} type='password'/>
+                <Field name='email' component={TextInput} label={trans('form.email.field')} type='text'/>
+                <Field name='password' component={TextInput} label={trans('form.password.field')} type='password'/>
                 <button>{trans('submit')}</button>
                 <button type='button' className="forgotPasswordLink"
                         onClick={goToForgotPassword}>{trans('auth.forgot.password.link')}</button>

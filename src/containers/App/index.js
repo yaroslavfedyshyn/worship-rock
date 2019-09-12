@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {connect} from "react-redux";
 
 import {
@@ -15,10 +15,8 @@ import Login from '../../containers/Auth/Login';
 import ForgotPassword from '../../containers/Auth/ForgotPassword';
 import SignUp from "../Auth/SignUp";
 import ResetPassword from "../Auth/ResetPassword";
-import {getMeAction} from "../Auth/actions";
 
-import PrivateRoute from '../../components/PrivatRoute'
-import StrictlyPublicRoute from '../../components/StrictlyPublicRoute'
+import {getMeAction} from "../Auth/actions";
 
 class App extends Component {
 
@@ -29,11 +27,11 @@ class App extends Component {
     render() {
         return (
             <Switch>
-                <PrivateRoute exact path={ROUTE_TO_ROOT} component={Home}/>
-                <StrictlyPublicRoute exact path={ROUTE_TO_LOGIN} component={Login}/>
-                <StrictlyPublicRoute exact path={ROUTE_TO_SIGN_UP} component={SignUp}/>
-                <StrictlyPublicRoute exact path={ROUTE_TO_FORGOT_PASSWORD} component={ForgotPassword}/>
-                <StrictlyPublicRoute exact path={ROUTE_TO_RESET_PASSWORD} component={ResetPassword}/>
+                <Route exact path={ROUTE_TO_ROOT} component={Home}/>
+                <Route exact path={ROUTE_TO_LOGIN} component={Login}/>
+                <Route exact path={ROUTE_TO_SIGN_UP} component={SignUp}/>
+                <Route exact path={ROUTE_TO_FORGOT_PASSWORD} component={ForgotPassword}/>
+                <Route exact path={ROUTE_TO_RESET_PASSWORD} component={ResetPassword}/>
             </Switch>
         )
     }
