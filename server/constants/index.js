@@ -1,0 +1,7 @@
+const GENERATE_STRING_LENGTH = 60;
+const ENCRYPT_SALT_ROUNDS = 10;
+
+module.exports = {
+    GENERATE_STRING_LENGTH,
+    ENCRYPT_SALT_ROUNDS
+};

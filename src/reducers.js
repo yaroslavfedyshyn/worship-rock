@@ -3,7 +3,6 @@ import {combineReducers} from "redux-immutable";
 import {reducer as formReducer} from 'redux-form/immutable';
 import {LOCATION_CHANGE } from 'react-router-redux'
 
-import appReducer from './containers/App/reducer'
 import authReducer from './containers/Auth/reducer'
 import languageProviderReducer from './utils/langReducer'
 
@@ -27,7 +26,6 @@ function routeReducer(state = routeInitialState, action) {
 
 
 export default combineReducers({
-        //app: appReducer,
         auth: authReducer,
         form: formReducer,
         routing: routeReducer,

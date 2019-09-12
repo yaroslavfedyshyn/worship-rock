@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 import {injectIntl} from "react-intl";
 
 import validate from "./validate";
-import {loginAction} from "../actions";
 import {
     ROUTE_TO_FORGOT_PASSWORD,
     ROUTE_TO_SIGN_UP

@@ -18,7 +18,7 @@ import {
     resetPasswordApi,
 } from './api';
 
-export const getMeAction = createAction(GET_ME, async (d) => await getMeApi(d));
+export const getMeAction = createAction(GET_ME, async () => await getMeApi());
 
 export const loginAction = createAction(LOGIN, async (d) => await loginApi(d));
 export const logoutAction = createAction(LOGOUT, async (d) => await logoutApi(d));

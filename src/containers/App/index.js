@@ -1,5 +1,6 @@
-import React from 'react'
-import {Route, Switch} from 'react-router-dom'
+import React, {Component} from 'react'
+import {Route, Switch} from 'react-router-dom';
+import {connect} from "react-redux";
 
 import {
     ROUTE_TO_ROOT,
@@ -15,9 +16,16 @@ import ForgotPassword from '../../containers/Auth/ForgotPassword';
 import SignUp from "../Auth/SignUp";
 import ResetPassword from "../Auth/ResetPassword";
 
-const App = () => {
+import {getMeAction} from "../Auth/actions";
 
-    return (
+class App extends Component {
+
+    componentDidMount() {
+        this.props.getMe();
+    }
+
+    render() {
+        return (
             <Switch>
                 <Route exact path={ROUTE_TO_ROOT} component={Home}/>
                 <Route exact path={ROUTE_TO_LOGIN} component={Login}/>
@@ -25,7 +33,12 @@ const App = () => {
                 <Route exact path={ROUTE_TO_FORGOT_PASSWORD} component={ForgotPassword}/>
                 <Route exact path={ROUTE_TO_RESET_PASSWORD} component={ResetPassword}/>
             </Switch>
-    )
-};
+        )
+    }
+}
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+    getMe: () => dispatch(getMeAction())
+});
+
+export default connect((state) => state, mapDispatchToProps)(App)

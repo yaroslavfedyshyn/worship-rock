@@ -1,9 +1,9 @@
 import api from '../../api';
 import apiSubmissionError from '../../utils/apiSubmissionError'
 
-export const getMeApi = (data) =>
+export const getMeApi = () =>
     api
-        .get('/auth/profile', data)
+        .get('/auth/profile')
         .then(apiSubmissionError);
 
 export const loginApi = (data) =>

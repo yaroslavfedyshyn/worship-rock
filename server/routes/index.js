@@ -1,9 +1,11 @@
 const { Router } = require('express');
-const register = require ('./auth/register/_post');
+const authRoutes = require('./auth');
+const isAuthorized = require('./auth/isAuthorized');
 
 const router = Router();
 
-router.route('/auth/register')
-    .post(register);
+router.use('/auth', authRoutes);
+
+router.use(isAuthorized);
 
 module.exports = router;

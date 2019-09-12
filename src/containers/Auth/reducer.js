@@ -1,23 +1,30 @@
 import typeToReducer from 'type-to-reducer';
-import {LOGIN} from "./constants";
-import setToken from "../../utils/setToken";
-import setUser from "../../utils/setUser";
+import {
+    LOGIN,
+    GET_ME
+} from "./constants";
 import {fromJS} from "immutable";
 
-export const initialState = {
+export const initialState = fromJS({
     me: null,
-};
+});
 
 export default typeToReducer({
+    [GET_ME]: {
+        SUCCESS: (state, action) => {
+            //debugger;
+            return state
+                .set('me', fromJS(action.payload.data))
+        },
+    },
+
     [LOGIN]: {
         SUCCESS: (state, action) => {
-            const data = action.payload;
 
-            setUser(data.user);
-            setToken(data.token);
+            const user = action.payload.data;
 
             return state
-                .set('me', fromJS(data.user))
+                .set('me', fromJS(user))
 
         }
     }
