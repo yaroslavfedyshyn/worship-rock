@@ -12,7 +12,6 @@ export const initialState = fromJS({
 export default typeToReducer({
     [GET_ME]: {
         SUCCESS: (state, action) => {
-            //debugger;
             return state
                 .set('me', fromJS(action.payload.data))
         },

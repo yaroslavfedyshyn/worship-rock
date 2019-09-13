@@ -41,11 +41,6 @@ userSchema.pre('save', function (next) {
     })
 });
 
-userSchema.pre('find', function(next) {
-    console.log(this)
-    console.log('running parent schema pre hook');
-    next();
-});
 
 userSchema.set('toJSON', {
     transform: function (doc, ret, options) {

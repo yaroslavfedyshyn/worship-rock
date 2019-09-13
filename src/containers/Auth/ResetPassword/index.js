@@ -5,7 +5,7 @@ import {injectIntl} from "react-intl";
 import {reduxForm, getFormSyncErrors} from 'redux-form/immutable';
 
 import validate from "./validate";
-import { resetPasswordAction} from "../actions";
+import {resetPasswordAction} from "../actions";
 import ResetPassword from "./components/ResetPassword";
 
 const ResetPasswordContainer = (props) => {
@@ -18,16 +18,32 @@ const ResetPasswordContainer = (props) => {
         errors
     } = props;
 
+    const getQueryToken = () => {
+        const search = window.location.search;
+        return search.slice(7) // token
+    };
+
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        const token = getQueryToken();
+
 
         if (!valid) {
             return touch(...Object.keys(errors));
         }
 
-        const submitter = handleSubmit(async (values) => {
-            await onSubmit(values)
+        const submitter = handleSubmit(async (_values) => {
+            const values = _values.toJS();
+            values.token = token;
+
+            const {
+                confirmPassword,
+                ...data
+            } = values;
+
+            await onSubmit(data);
+
         });
 
         submitter();
@@ -40,7 +56,7 @@ const ResetPasswordContainer = (props) => {
     )
 };
 
-const formName = 'resetPassword';
+const formName = 'forgotPassword';
 
 const mapStateToProps = state => ({
     errors: getFormSyncErrors(formName)(state) || {},

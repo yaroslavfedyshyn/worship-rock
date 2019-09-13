@@ -1,7 +1,4 @@
-const {GENERATE_STRING_LENGTH} = require("../constants");
-
-
-const generateString = (length = GENERATE_STRING_LENGTH) => {
+const generateString = (length) => {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;

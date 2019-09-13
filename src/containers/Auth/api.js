@@ -23,11 +23,11 @@ export const signUpApi = (data) =>
 
 export const forgotPasswordApi = (data) =>
     api
-        .post('/auth/forgot-password', data)
+        .post('/auth/password/forgot', data)
         .then(apiSubmissionError);
 
 export const resetPasswordApi = (data) =>
     api
-        .post('/auth/reset-password', data)
+        .post('/auth/password/reset', data)
         .then(apiSubmissionError);
 

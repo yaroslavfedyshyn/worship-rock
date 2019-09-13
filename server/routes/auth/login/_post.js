@@ -1,6 +1,7 @@
 const Session = require("../../../models/session");
 const User = require("../../../models/user");
 const tokenGenerate = require('../../../utils/generateString');
+const {GENERATE_SESSION_TOKEN_LENGTH} = require('../../../constants');
 
 module.exports = async (req, res, next) => {
     const {
@@ -15,14 +16,14 @@ module.exports = async (req, res, next) => {
                 if (err) throw err;
                 if (isMatch) {
                     const session = new Session({
-                            token: tokenGenerate(),
+                            token: tokenGenerate(GENERATE_SESSION_TOKEN_LENGTH),
                             userId: user._id
                         }
                     );
 
-                    const result = await session.save();
+                    await session.save();
 
-                    res.cookie('sessionToken', session.token, { maxAge: 900000, httpOnly: true });
+                    res.cookie('sessionToken', session.token, {maxAge: 900000, httpOnly: true});
                     res.send(user);
                 }
             });
