@@ -1,6 +1,8 @@
-module.exports = function (joiSchema) {
+module.exports =  (joiSchema) => {
     return function (req, res, next) {
-        const {error} = joiSchema.validate(req.body);
+        const data = Object.assign(req.body, req.query, req.param);
+
+        const {error} = joiSchema.validate(data);
 
         return error ? next(error) : next();
     }

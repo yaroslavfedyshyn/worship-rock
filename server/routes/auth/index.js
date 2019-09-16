@@ -1,28 +1,32 @@
-const { Router } = require('express');
+const {Router} = require('express');
 
-const User = require('../../models/user');
-const register = require ('./register/_post');
-const login = require ('./login/_post');
-const getMe = require ('./getMe/_get');
-const forgotPassword = require ('./forgotPassword/_post');
-const resetPassword = require ('./resetPassword/_get');
+const register = require('./register/_post');
+const login = require('./login/_post');
+const getMe = require('./getMe/_get');
+const forgotPassword = require('./forgotPassword/_post');
+const resetPassword = require('./resetPassword/_get');
 const isAuthorized = require('../auth/isAuthorized');
 const validate = require('./schemaValidate');
-const joiSchemas = require('./joiSchemas');
+const {
+    registerSchema,
+    loginSchema,
+    forgotPasswordSchema,
+    resetPasswordSchema
+} = require('./joiSchemas');
 
 const router = Router();
 
 router.route('/register')
-    .post(validate(joiSchemas.registerSchema), register);
+    .post(validate(registerSchema), register);
 
 router.route('/login')
-    .post(login);
+    .post(validate(loginSchema), login);
 
 router.route('/password/forgot')
-    .post(forgotPassword);
+    .post(validate(forgotPasswordSchema), forgotPassword);
 
 router.route('/password/reset')
-    .post(resetPassword);
+    .post(validate(resetPasswordSchema), resetPassword);
 
 router.use(isAuthorized);
 router.route('/profile')
