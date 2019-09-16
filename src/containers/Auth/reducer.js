@@ -19,12 +19,10 @@ export default typeToReducer({
 
     [LOGIN]: {
         SUCCESS: (state, action) => {
-
             const user = action.payload.data;
 
             return state
                 .set('me', fromJS(user))
-
         }
     }
 }, initialState)

@@ -1,11 +1,11 @@
 const Session = require("../../models/session");
 const User = require("../../models/user");
+const {HttpUnAuthorizedRequestError} = require('../../utils/errors');
 
 module.exports = async (req, res, next) => {
     try {
         if (!req.cookies || !req.cookies.sessionToken) {
-            res.status(401);
-            return res.send('Unauthorized');
+            next(new HttpUnAuthorizedRequestError())
         }
 
         const session = await Session.findOne({token: req.cookies.sessionToken});

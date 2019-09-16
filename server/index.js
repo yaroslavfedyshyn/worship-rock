@@ -19,13 +19,27 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+
 app.use(helmet());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', routes);
+app.use((err, req, res, next) => {
 
+    const {
+        status,
+        details,
+        message,
+    } = err;
+
+    res.status(status || 500).json({
+        code: status,
+        message,
+        details,
+    });
+});
 
 app.listen(config.port, () => {
     console.info(`Server ${config.env} started at port ${config.port}`);
