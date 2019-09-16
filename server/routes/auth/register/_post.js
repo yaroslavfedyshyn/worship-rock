@@ -9,6 +9,7 @@ module.exports = async (req, res, next) => {
     } = req.body;
 
     try {
+
         const user = new User({
                 firstName,
                 lastName,
@@ -16,6 +17,7 @@ module.exports = async (req, res, next) => {
                 password
             }
         );
+
         const result = await user.save();
         res.send(result);
     } catch (error) {

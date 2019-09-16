@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const Joi = require('@hapi/joi');
+
 const {ENCRYPT_SALT_ROUNDS} = require('../constants');
 
 const {Schema, model} = mongoose;
@@ -35,7 +37,7 @@ userSchema.pre('save', function (next) {
     // only hash the password if it has been modified (or is new)
     if (!user && !user.isModified('password')) return next();
 
-    bcrypt.hash(user.password, ENCRYPT_SALT_ROUNDS, function(err, hash) {
+    bcrypt.hash(user.password, ENCRYPT_SALT_ROUNDS, function (err, hash) {
         user.password = hash;
         next();
     })
@@ -51,8 +53,8 @@ userSchema.set('toJSON', {
     },
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+userSchema.methods.comparePassword = function (candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
     });
