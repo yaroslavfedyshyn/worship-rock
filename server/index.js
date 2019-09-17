@@ -9,6 +9,7 @@ const corsOptions = require('./cors');
 const config = require('./config');
 const routes = require('./routes');
 const isAuthorized = require('./routes/auth/isAuthorized');
+const parseErrors = require('./utils/parseErrors')
 
 const app = express();
 
@@ -26,20 +27,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', routes);
-app.use((err, req, res, next) => {
-
-    const {
-        status,
-        details,
-        message,
-    } = err;
-
-    res.status(status || 500).json({
-        code: status,
-        message,
-        details,
-    });
-});
+app.use(parseErrors);
 
 app.listen(config.port, () => {
     console.info(`Server ${config.env} started at port ${config.port}`);

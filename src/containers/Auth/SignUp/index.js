@@ -1,5 +1,8 @@
 import React from 'react';
-import {reduxForm, getFormSyncErrors} from 'redux-form/immutable';
+import {
+    reduxForm,
+    getFormSyncErrors
+} from 'redux-form/immutable';
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {injectIntl} from "react-intl";
@@ -20,9 +23,9 @@ const SignUpContainer = (props) => {
         errors,
     } = props;
 
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
         if (!valid) {
             return touch(...Object.keys(errors));
         }
@@ -49,8 +52,8 @@ const SignUpContainer = (props) => {
 
     return (
         <SignUp trans={(id) => props.intl.formatMessage({id})}
-               goToLogin={goToLogin}
-               handleFormSubmit={handleFormSubmit}/>
+                goToLogin={goToLogin}
+                handleFormSubmit={handleFormSubmit}/>
     )
 };
 

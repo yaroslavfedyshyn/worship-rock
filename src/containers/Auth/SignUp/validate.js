@@ -21,7 +21,7 @@ export default (_values, props) => {
         confirmPassword
     } = values;
 
-    const errors = {};
+    let errors = {};
 
     const trimmedEmail = _.trim(email);
     const trimmedFirstName = _.trim(firstName);

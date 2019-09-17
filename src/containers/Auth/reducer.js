@@ -1,12 +1,13 @@
 import typeToReducer from 'type-to-reducer';
 import {
     LOGIN,
-    GET_ME
+    GET_ME, SIGN_UP
 } from "./constants";
 import {fromJS} from "immutable";
+import submissionError from "../../utils/submissionError";
 
 export const initialState = fromJS({
-    me: null,
+    me: null
 });
 
 export default typeToReducer({
@@ -23,6 +24,14 @@ export default typeToReducer({
 
             return state
                 .set('me', fromJS(user))
+        },
+        FAIL: (state, action) => {
+            submissionError(action.payload.response.data.details[0])
+        }
+    },
+    [SIGN_UP]:  {
+        FAIL: (state, action) => {
+            submissionError(action.payload.response.data.details[0])
         }
     }
 }, initialState)
