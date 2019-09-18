@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Route, Switch} from 'react-router-dom';
 import {connect} from "react-redux";
+import '../../css/style.css';
 
 import {
     ROUTE_TO_ROOT,
