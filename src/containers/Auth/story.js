@@ -1,30 +1,25 @@
-import history from "../../history";
+import history from '../../history';
 
 import {
-    loginAction,
-    logoutAction,
-    signUpAction,
-    forgotPasswordAction,
-    resetPasswordAction,
-    getMeAction,
+  loginAction,
+  signUpAction,
 } from './actions';
 import {
-    ROUTE_TO_LOGIN,
-    ROUTE_TO_ROOT
+  ROUTE_TO_LOGIN,
+  ROUTE_TO_ROOT,
 } from '../../constants/routes';
 
 
-export const loginStory = async ({data, dispatch}) => {
-    await dispatch(loginAction(data));
+export const loginStory = async ({ data, dispatch }) => {
+  await dispatch(loginAction(data));
 
-    history.push(ROUTE_TO_ROOT);
+  history.push(ROUTE_TO_ROOT);
 };
 
-export const signUpStory = async ({data, dispatch}) => {
+export const signUpStory = async ({ data, dispatch }) => {
+  await dispatch(signUpAction(data));
 
-    await dispatch(signUpAction(data));
-
-    history.push(ROUTE_TO_LOGIN);
+  history.push(ROUTE_TO_LOGIN);
 };
 
 // export const logoutStory = async ({dispatch}) => {

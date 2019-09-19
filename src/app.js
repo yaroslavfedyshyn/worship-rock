@@ -1,50 +1,50 @@
-import React, {Component} from 'react';
-import {Router} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 import history from './history';
-import {Provider} from "react-redux";
-import {IntlProvider} from 'react-intl';
 
-import store from "./store";
+import store from './store';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-import en_messages from './translations/en.json';
-import ru_messages from './translations/ru.json';
-import {DEFAULT_LOCALE} from "./constants";
+import messagesEn from './translations/en.json';
+import messagesRu from './translations/ru.json';
+import { DEFAULT_LOCALE } from './constants';
 
 export default class Index extends Component {
-
-    state = {
-        lang: DEFAULT_LOCALE
-    };
-
     messages = {
-        en: en_messages,
-        ru: ru_messages
+      en: messagesEn,
+      ru: messagesRu,
     };
 
     constructor() {
-        super();
-        store.subscribe(() => {
-            const state = store.getState().toJS();
+      super();
 
-            this.setState({
-                lang: state.locale.lang
-            })
-        })
+      this.state = {
+        lang: DEFAULT_LOCALE,
+      };
+
+      store.subscribe(() => {
+        const state = store.getState().toJS();
+
+        this.setState({
+          lang: state.locale.lang,
+        });
+      });
     }
 
     render() {
-        const {lang} = this.state;
+      const { lang } = this.state;
 
-        return (
-            <Provider store={store}>
-                <Router history={history}>
-                    <IntlProvider locale={lang} messages={this.messages[lang]}>
-                        <App/>
-                    </IntlProvider>
-                </Router>
-            </Provider>
-        )
+      return (
+        <Provider store={store}>
+          <Router history={history}>
+            <IntlProvider locale={lang} messages={this.messages[lang]}>
+              <App />
+            </IntlProvider>
+          </Router>
+        </Provider>
+      );
     }
 }
 

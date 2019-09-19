@@ -1,3 +1,3 @@
-import MainCover from "./components/MainCover";
+import MainCover from './components/MainCover';
 
 export default MainCover;

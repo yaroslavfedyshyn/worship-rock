@@ -1,27 +1,25 @@
-const User = require("../../../models/user");
-const {HttpUnprocessableEntityError} = require('../../../utils/errors');
+const User = require('../../../models/user');
+const { HttpUnprocessableEntityError } = require('../../../utils/errors');
 
 module.exports = async (req, res, next) => {
-    const {
-        firstName,
-        lastName,
-        email,
-        password
-    } = req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+  } = req.body;
 
-    try {
+  try {
+    const user = new User({
+      firstName,
+      lastName,
+      email,
+      password,
+    });
 
-        const user = new User({
-                firstName,
-                lastName,
-                email,
-                password
-            }
-        );
-
-        const result = await user.save();
-        res.send(result);
-    } catch (error) {
-        next(new HttpUnprocessableEntityError(...error)) // ?
-    }
+    const result = await user.save();
+    res.send(result);
+  } catch (error) {
+    next(new HttpUnprocessableEntityError(...error)); // ?
+  }
 };

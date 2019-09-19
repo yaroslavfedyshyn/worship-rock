@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 
-import App from './app'
+import App from './app';
 
 ReactDOM.render(
-    <App/>, document.getElementById('root'));
+  <App />, document.getElementById('root'),
+);
 
 
 // If you want your src to work offline and load faster, you can change

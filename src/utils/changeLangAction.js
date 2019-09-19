@@ -1,6 +1,8 @@
-import {CHANGE_LOCALE} from "../constants";
-import {createAction} from 'redux-actions';
+import { createAction } from 'redux-actions';
+import { CHANGE_LOCALE } from '../constants';
 
-export const changeLocaleAction = createAction(
-    CHANGE_LOCALE,
+const changeLocaleAction = createAction(
+  CHANGE_LOCALE,
 );
+
+export default changeLocaleAction;

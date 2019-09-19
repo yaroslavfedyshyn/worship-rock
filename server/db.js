@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const {DB} = require('./config');
+const { DB } = require('./config');
 
 mongoose.connect(
-    DB,
-    {
-        useCreateIndex: true,
-        useNewUrlParser: true,
-    }
+  DB,
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+  },
 );
 
 const db = mongoose.connection;

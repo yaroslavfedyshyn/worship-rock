@@ -5,7 +5,7 @@ dotenv.config();
 const DEFAULT_PORT = 3001;
 
 const env = process.env.NODE_ENV;
-const DB = process.env.DB;
+const { DB } = process.env;
 const frontenHost = process.env.FRONTEND_HOST;
 const frontendResetPasswordUrl = process.env.FRONTEND_RESET_PASSWORD_URL;
 
@@ -21,16 +21,16 @@ const whiteListOriginsStr = process.env.WHITE_LIST_ORIGINS || '';
 const whiteListOrigins = whiteListOriginsStr ? whiteListOriginsStr.split(',') : [];
 
 module.exports = {
-    DB,
-    env,
-    isDev,
-    port: process.env.PORT || DEFAULT_PORT,
-    frontenHost,
-    frontendResetPasswordUrl,
-    smtpHost,
-    smtpService,
-    smtpPort,
-    smtpUser,
-    smtpPassword,
-    whiteListOrigins,
+  DB,
+  env,
+  isDev,
+  port: process.env.PORT || DEFAULT_PORT,
+  frontenHost,
+  frontendResetPasswordUrl,
+  smtpHost,
+  smtpService,
+  smtpPort,
+  smtpUser,
+  smtpPassword,
+  whiteListOrigins,
 };
