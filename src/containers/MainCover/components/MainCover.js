@@ -24,7 +24,7 @@ const MainCover = () => {
                   <h6 data-animation="fadeInUp" data-delay="100ms">Latest album</h6>
                   <h2 data-animation="fadeInUp" data-delay="300ms">
 Worship Music
-                    <span>Worship Musicc</span>
+                    <span>Worship Music</span>
                   </h2>
                   <a
                     data-animation="fadeInUp"

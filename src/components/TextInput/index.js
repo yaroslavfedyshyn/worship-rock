@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextInput = ({
+const Index = ({
   input, label, type, meta: { touched, error, warning },
 }) => (
   <div>
@@ -15,4 +15,4 @@ const TextInput = ({
   </div>
 );
 
-export default TextInput;
+export default Index;

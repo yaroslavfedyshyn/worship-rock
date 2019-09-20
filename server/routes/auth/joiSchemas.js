@@ -9,7 +9,7 @@ const registerSchema = Joi.object({
 });
 
 const loginSchema = Joi.object({
-  password: Joi.string().min(10).max(30).regex(/[a-zA-Z0-9]{6,30}/)
+  password: Joi.string().min(6).max(30).regex(/[a-zA-Z0-9]{6,30}/)
     .required(),
   email: Joi.string().email().required(),
 });

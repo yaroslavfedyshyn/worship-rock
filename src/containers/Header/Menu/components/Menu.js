@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  ROUTE_TO_LOGIN,
+  ROUTE_TO_ROOT,
+} from '../../../../constants/routes';
+import MainMenu from '../../../../components/MainMenu';
 
 const Menu = () => (
   <div className="oneMusic-main-menu">
@@ -9,7 +14,7 @@ const Menu = () => (
         <nav className="classy-navbar justify-content-between" id="oneMusicNav">
 
           {/* Nav brand */}
-          <a href="index.html" className="nav-brand"><img src="../../../../img/core-img/logo.png" alt="" /></a>
+          <a href={ROUTE_TO_ROOT} className="nav-brand"><img src={require('../../../../img/core-img/logo.png')} alt="" /></a>
 
           {/* Navbar Toggler */}
           <div className="classy-navbar-toggler">
@@ -35,44 +40,7 @@ const Menu = () => (
 
             {/* Nav Start */}
             <div className="classynav">
-              <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="albums-store.html">Albums</a></li>
-                <li>
-                  <a href="#">Pages</a>
-                  <ul className="dropdown">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="albums-store.html">Albums</a></li>
-                    <li><a href="event.html">Events</a></li>
-                    <li><a href="blog.html">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="elements.html">Elements</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li>
-                      <a href="#">Dropdown</a>
-                      <ul className="dropdown">
-                        <li><a href="#">Even Dropdown</a></li>
-                        <li><a href="#">Even Dropdown</a></li>
-                        <li><a href="#">Even Dropdown</a></li>
-                        <li>
-                          <a href="#">Even Dropdown</a>
-                          <ul className="dropdown">
-                            <li><a href="#">Deeply Dropdown</a></li>
-                            <li><a href="#">Deeply Dropdown</a></li>
-                            <li><a href="#">Deeply Dropdown</a></li>
-                            <li><a href="#">Deeply Dropdown</a></li>
-                            <li><a href="#">Deeply Dropdown</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#">Even Dropdown</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="event.html">Events</a></li>
-                <li><a href="blog.html">News</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
+              <MainMenu />
 
               {/* Login/Register & Cart Button */}
               <div
@@ -80,7 +48,7 @@ const Menu = () => (
               >
                 {/* Login/Register */}
                 <div className="login-register-btn mr-50">
-                  <a href="login.html" id="loginBtn">Login / Register</a>
+                  <a href={ROUTE_TO_LOGIN} id="loginBtn">Login / Register</a>
                 </div>
 
                 {/* Cart Button */}
