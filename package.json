@@ -88,12 +88,17 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.3.1"
   },
+  "engines": {
+    "node": "10.16.2",
+    "npm": "6.10.3"
+  },
   "scripts": {
     "start": "node scripts/start.js",
     "dev": "nodemon server",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "lint": "eslint ./src --fix"
+    "lint": "eslint ./src --fix",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": "airbnb"
